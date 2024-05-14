@@ -4,13 +4,9 @@ namespace CQRS.Domain.Vehicles;
 
 public sealed class Vehicle : Entity
 {
-    public string? Model { get; private set; }
-    public string? Vin { get; private set; }
-    public string? Street { get; private set; }
-    public int Number { get; private set; }
-    public string? City { get; private set; }
-    public string? Province { get; private set; }
-    public string? Country { get; private set; }
+    public Model? Model { get; private set; }
+    public Vin? Vin { get; private set; }
+    public Address? Address { get; private set; }
     public decimal Price { get; private set; }
     public string? Coin { get; private set; }
     public decimal Mantainance { get; private set; }
