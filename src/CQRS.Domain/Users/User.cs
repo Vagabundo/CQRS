@@ -1,4 +1,5 @@
 using CQRS.Domain.Abstractions;
+using CQRS.Domain.Users.Events;
 
 namespace CQRS.Domain.Users;
 
@@ -17,6 +18,9 @@ public sealed class User : Entity
 
     public static User Create(Name name, FamilyName familyName, Email email)
     {
-        return new User(Guid.NewGuid(), name, familyName, email);
+        var user = new User(Guid.NewGuid(), name, familyName, email);
+        user.RaiseDomainEvent(new UserCreatedEvent(user.Id));
+        
+        return user;
     }
 }
