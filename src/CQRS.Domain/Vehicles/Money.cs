@@ -14,5 +14,5 @@ public record Money(decimal Ammount, Coin Coin)
 
     public static Money Zero() => new(0, Coin.None);
     public static Money Zero(Coin coin) => new(0, coin);
-    public bool IsZero => this == Zero(Coin);
+    public bool IsZero() => this == Zero(Coin);
 }

@@ -7,19 +7,19 @@ public sealed class Vehicle : Entity
     public Model? Model { get; private set; }
     public Vin? Vin { get; private set; }
     public Address? Address { get; private set; }
-    public Money Price { get; private set; }
+    public Money Cost { get; private set; }
     public Money Maintenance { get; private set; }
     public DateTime? LastRentDate { get; private set; }
     public List<Accessory> Accessories { get; private set; } = new();
 
     public Vehicle(
-        Guid id, Model model, Vin vin, Address address, Money price,
+        Guid id, Model model, Vin vin, Address address, Money cost,
         Money maintenance, DateTime lastRentDate, List<Accessory> accessories) : base(id)
     {
         Model = model;
         Vin = vin;
         Address = address;
-        Price = price;
+        Cost = cost;
         Maintenance = maintenance;
         LastRentDate = lastRentDate;
         Accessories = accessories;
