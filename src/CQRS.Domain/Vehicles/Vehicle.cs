@@ -9,7 +9,7 @@ public sealed class Vehicle : Entity
     public Address? Address { get; private set; }
     public Money Cost { get; private set; }
     public Money Maintenance { get; private set; }
-    public DateTime? LastRentDate { get; private set; }
+    public DateTime? LastRentDate { get; internal set; }
     public List<Accessory> Accessories { get; private set; } = new();
 
     public Vehicle(
