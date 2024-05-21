@@ -1,4 +1,4 @@
-namespace CQRS.Domain.Vehicles;
+namespace CQRS.Domain.Shared;
 
 public record Money(decimal Ammount, Coin Coin)
 {

@@ -1,5 +1,6 @@
 using CQRS.Domain.Abstractions;
 using CQRS.Domain.Rents.Events;
+using CQRS.Domain.Shared;
 using CQRS.Domain.Vehicles;
 
 namespace CQRS.Domain.Rents;
@@ -106,6 +107,21 @@ public sealed class Rent : Entity
         CancellationTime = utcNow;
 
         RaiseDomainEvent(new RentCancelledEvent(Id));
+
+        return Result.Success();
+    }
+
+    public Result Complete(DateTime utcNow)
+    {
+        if(Status != RentStatus.Confirmed)
+        {
+            return Result.Failure(RentErrors.NotConfirmed);
+        }
+
+        Status = RentStatus.Completed;
+        CompletionTime = utcNow;
+
+        RaiseDomainEvent(new RentCompletedEvent(Id));
 
         return Result.Success();
     }

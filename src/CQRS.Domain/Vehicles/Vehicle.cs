@@ -1,4 +1,5 @@
 using CQRS.Domain.Abstractions;
+using CQRS.Domain.Shared;
 
 namespace CQRS.Domain.Vehicles;
 

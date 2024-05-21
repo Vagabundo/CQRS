@@ -1,4 +1,4 @@
-using CQRS.Domain.Vehicles;
+using CQRS.Domain.Shared;
 
 namespace CQRS.Domain.Rents;
 
