@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.Api", "src\CQRS.Api\CQ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Domain", "src\CQRS.Domain\CQRS.Domain.csproj", "{6E21AB76-511E-42EC-AAC2-AB936928C6B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Application", "src\CQRS.Application\CQRS.Application.csproj", "{30700E77-233E-4A89-850E-B9D2490A8EC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{6E21AB76-511E-42EC-AAC2-AB936928C6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E21AB76-511E-42EC-AAC2-AB936928C6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E21AB76-511E-42EC-AAC2-AB936928C6B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30700E77-233E-4A89-850E-B9D2490A8EC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30700E77-233E-4A89-850E-B9D2490A8EC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30700E77-233E-4A89-850E-B9D2490A8EC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30700E77-233E-4A89-850E-B9D2490A8EC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +36,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{02300B43-D8C8-4979-A8CD-E096F9EDA4A6} = {20BB8A7F-2844-404C-9383-40B22977CDC8}
 		{6E21AB76-511E-42EC-AAC2-AB936928C6B5} = {20BB8A7F-2844-404C-9383-40B22977CDC8}
+		{30700E77-233E-4A89-850E-B9D2490A8EC3} = {20BB8A7F-2844-404C-9383-40B22977CDC8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EC279E29-4157-4736-98E2-146E105B8B0E}
