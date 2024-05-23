@@ -1,7 +1,15 @@
 using CQRS.Application.Abstractions.Clock;
+using CQRS.Application.Abstractions.Data;
 using CQRS.Application.Abstractions.Email;
+using CQRS.Domain.Abstractions;
+using CQRS.Domain.Rents;
+using CQRS.Domain.Users;
+using CQRS.Domain.Vehicles;
 using CQRS.Infrastructure.Clock;
+using CQRS.Infrastructure.Data;
 using CQRS.Infrastructure.Email;
+using CQRS.Infrastructure.Repositories;
+using Dapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +28,16 @@ public static class DependencyInjection
         services.AddDbContext<ApplicationDbContext>(options => {
             options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention();
         });
+
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IVehicleRepository, VehicleRepository>();
+        services.AddScoped<IRentRepository, RentRepository>();
+
+        services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
+
+        services.AddSingleton<ISqlConnectionFactory>(_ => new SqlConnectionFactory(connectionString));
+
+        SqlMapper.AddTypeHandler(new DateOnlyTypeHandler());
 
         return services;
     }
