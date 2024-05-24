@@ -49,7 +49,7 @@ public class ExceptionHandlingMiddleware
         {
             ValidationException validationException => new ExceptionDetails(
                 StatusCodes.Status400BadRequest,
-                "ValidationFaliure",
+                "ValidationFailure",
                 "Validation Error",
                 "There were validation errors",
                 validationException.Errors
