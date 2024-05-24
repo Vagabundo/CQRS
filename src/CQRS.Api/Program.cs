@@ -27,7 +27,9 @@ if (app.Environment.IsDevelopment())
 //app.UseAuthorization();
 
 app.ApplyMigration();
-app.SeedData();
+//app.SeedData();
+
+app.UseCustomExceptionHandler();
 
 app.MapControllers();
 

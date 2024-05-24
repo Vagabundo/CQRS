@@ -1,3 +1,4 @@
+using CQRS.Api.Middleware;
 using CQRS.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,5 +23,10 @@ public static class ApplicationBuilderExtensions
             var logger = loggerFactory.CreateLogger<Program>();
             logger.LogError(ex, "Error in migration");
         }
+    }
+
+    public static void UseCustomExceptionHandler(this IApplicationBuilder app)
+    {
+        app.UseMiddleware<ExceptionHandlingMiddleware>();
     }
 }
