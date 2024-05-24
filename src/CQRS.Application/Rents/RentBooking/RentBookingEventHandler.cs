@@ -33,6 +33,6 @@ internal sealed class RentBookingEventHandler : INotificationHandler<RentBooking
             return;
         }
 
-        await _emailService.SendAsync(user.Email, "Rent booked", "This booking has to be confirmed, otherwise it will be reverted");
+        await _emailService.SendAsync(user.Email!, "Rent booked", "This booking has to be confirmed, otherwise it will be reverted");
     }
 }

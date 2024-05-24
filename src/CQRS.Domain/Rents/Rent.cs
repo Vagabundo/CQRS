@@ -14,13 +14,14 @@ public sealed class Rent : Entity
     public Money? Accessories { get; private set; }
     public Money? TotalCost { get; private set; }
     public RentStatus Status { get; private set; }
-    public DateRange Duration { get; private set; }
+    public DateRange? Duration { get; private set; }
     public DateTime? CreationTime { get; private set; }
     public DateTime? ConfirmationTime { get; private set; }
     public DateTime? RejectionTime { get; private set; }
     public DateTime? CancellationTime { get; private set; }
     public DateTime? CompletionTime { get; private set; }
 
+    private Rent(){}
 
     public Rent(
         Guid id, Guid vehicleId, Guid userId, DateRange duration, Money costPerPeriod,
@@ -98,7 +99,7 @@ public sealed class Rent : Entity
 
         var currentDate = DateOnly.FromDateTime(utcNow);
 
-        if(currentDate > Duration.Start)
+        if(currentDate > Duration!.Start)
         {
             return Result.Failure(RentErrors.AlreadyStarted);
         }

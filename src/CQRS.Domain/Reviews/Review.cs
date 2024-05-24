@@ -9,10 +9,11 @@ public sealed class Review : Entity
     public Guid VehicleId { get; private set; }
     public Guid RentId { get; private set; }
     public Guid UserId { get; private set; }
-    public Rating Rating { get; private set; }
+    public Rating? Rating { get; private set; }
     public Comment? Comment { get; private set; }
     public DateTime? CreatedAt { get; private set; }
 
+    private Review(){}
     public Review(Guid id, Guid vehicleId, Guid rentId, Guid userId, Rating rating, Comment comment, DateTime? createdAt) : base(id)
     {
         VehicleId = vehicleId;

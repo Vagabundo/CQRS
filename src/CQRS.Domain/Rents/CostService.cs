@@ -7,7 +7,7 @@ public class CostService
 {
     public CostDetail CalculateCost(Vehicle vehicle, DateRange period)
     {
-        var coin = vehicle.Cost.Coin;
+        var coin = vehicle.Cost!.Coin;
         var costPerPeriod = new Money(period.Days * vehicle.Cost.Ammount, coin);
 
         decimal percentageChange = 0;
@@ -36,7 +36,7 @@ public class CostService
         var totalCost = Money.Zero();
         totalCost += costPerPeriod;
 
-        if(!vehicle.Maintenance.IsZero())
+        if(!vehicle.Maintenance!.IsZero())
         {
             totalCost += vehicle.Maintenance;
         }
