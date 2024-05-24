@@ -1,5 +1,6 @@
 using CQRS.Application.Abstractions.Clock;
 using CQRS.Application.Abstractions.Messaging;
+using CQRS.Application.Exceptions;
 using CQRS.Domain.Abstractions;
 using CQRS.Domain.Rents;
 using CQRS.Domain.Users;
@@ -47,11 +48,17 @@ internal sealed class RentBookingCommandHandler : ICommandHandler<RentBookingCom
             return Result.Failure<Guid>(RentErrors.Overlap);
         }
 
-        var rent = Rent.Book(vehicle, user.Id, duration, _dateTimeProvider.CurrentTime, _costService);
-        _rentRepository.Add(rent);
+        try{
+            var rent = Rent.Book(vehicle, user.Id, duration, _dateTimeProvider.CurrentTime, _costService);
+            _rentRepository.Add(rent);
 
-        await _unitOfWork.SaveChangesAsync(cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return rent.Id;
+            return rent.Id;
+        }
+        catch(ConcurrencyException)
+        {
+            return Result.Failure<Guid>(RentErrors.Overlap);
+        }
     }
 }

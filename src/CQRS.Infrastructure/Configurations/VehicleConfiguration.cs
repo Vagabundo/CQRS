@@ -33,5 +33,7 @@ internal sealed class VehicleConfiguration : IEntityTypeConfiguration<Vehicle>
             maintenanceBuilder.Property(money => money.Coin)
                 .HasConversion(coin => coin.Code, code => Coin.FromCode(code!));
         });
+
+        builder.Property<uint>("Version").IsRowVersion();
     }
 }
